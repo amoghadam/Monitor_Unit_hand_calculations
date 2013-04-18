@@ -1,0 +1,5 @@
+function out=myinetgraldose(teta)
+r=2.5;
+dmax=1.354
+% out=pi*(r*sin(teta)).^3;
+out=pi*((r*sin(teta)).^3)*dmax*PDDf(5,(10+(r*cos(teta)));

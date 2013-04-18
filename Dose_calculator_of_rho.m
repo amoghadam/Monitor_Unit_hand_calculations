@@ -1,0 +1,23 @@
+function out=Dose_calculator_of_rho(rho)
+dap=4;
+dpa=12;
+E=15;
+r=6.1538;
+MUAP=100/(TMRf(r,dap,15)*Scf(r,15,'T')*Spf(r,15,'T'));
+MUPA=100/(TMRf(r,dpa,15)*Scf(r,15,'T')*Spf(r,15,'T'));
+
+r2=rho*r;
+dpa2=dpa*rho;
+dap2=dap*rho;
+
+D_ap_hom=MUAP* TMRf(r,dap,E)*Scf(r,15,'T')*Spf(r,15,'T');
+CFap=(TMRf(r2,dap2,E)/TMRf(r,dap,E));
+D_ap_het=D_ap_hom*CFap;
+out(1,2)=D_ap_het;
+
+D_pa_hom=MUPA* TMRf(r,dpa,E)*Scf(r,15,'T')*Spf(r,15,'T');
+CFpa=(TMRf(r2,dpa2,E)/TMRf(r,dpa,E));
+D_pa_het=D_pa_hom*CFpa;
+out(1,3)=D_pa_het;
+
+out(1,1)=D_pa_het+D_ap_het;
